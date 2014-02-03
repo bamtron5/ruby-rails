@@ -14,7 +14,7 @@ development:
   database: #simple_cms_development
   pool: 5
   username: root
-  password: hHeqyNHfZ5pFraAaMvmT
+  password: sallydog
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -26,7 +26,7 @@ test:
   database: simple_cms_test
   pool: 5
   username: root
-  password: sorny2448
+  password: sallydog
   socket: /tmp/mysql.sock
 
 production:
@@ -35,5 +35,5 @@ production:
   database: simple_cms_production
   pool: 5
   username: root
-  password: sorny2448
+  password: sallydog
   socket: /tmp/mysql.sock
