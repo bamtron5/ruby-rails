@@ -11,16 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204002323) do
+ActiveRecord::Schema.define(version: 20140210214907) do
 
-  create_table "make_users", force: true do |t|
-    t.string   "first_name", limit: 25
-    t.string   "last_name",  limit: 50
-    t.string   "email",                 default: "", null: false
-    t.string   "password",   limit: 4
+  create_table "admin_users", force: true do |t|
+    t.string   "first_name",      limit: 25
+    t.string   "last_name",       limit: 50
+    t.string   "email",           limit: 100, default: "", null: false
+    t.string   "hashed_password", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username",        limit: 25
+    t.string   "salt",            limit: 40
   end
+
+  add_index "admin_users", ["username"], name: "index_admin_users_on_username", using: :btree
 
   create_table "pages", force: true do |t|
     t.integer  "subject_id"
