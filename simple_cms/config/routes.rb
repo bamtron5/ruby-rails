@@ -54,5 +54,7 @@ SimpleCms::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  post ':controller(/:action(/:id(.:format)))'
   get ':controller(/:action(/:id(.:format)))'
 end
