@@ -20,16 +20,42 @@ class SubjectsController < ApplicationController
   def create
     @subject = Subject.new(subject_params)
     if(@subject.save)
+      flash[:notice] = "Subject Created."
       redirect_to :action => 'list'
     else
-      render :action => :new
+      render('new')
     end
+  end
+  
+  def edit
+    @subject = Subject.find(params[:id])
+  end
+  
+  def update
+    @subject = Subject.find(params[:id])
+    if @subject.update_attributes(subject_params)
+      flash[:notice] = "Subject Updated."
+      redirect_to(:action => 'show', :id => @subject.id)
+    else
+      render('edit')
+    end
+  end
+  
+  def delete
+    @subject = Subject.find(params[:id])
+  end
+  
+  
+  def destroy
+    Subject.find(params[:id]).destroy
+    flash[:notice] = "Subject Destroyed."
+    redirect_to(:action => 'list')
   end
   
   private
   
   def subject_params
-    params.require(:subject).permit(:name, :position, :visible)
+    params.require(:subject).permit(:name, :position, :visible, :id)
   end
   
 end
